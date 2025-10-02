@@ -33,5 +33,6 @@ Discounts can be applied as a percentage of the total price.
 MyShopPriceRule added to make extra discount.
 
 **Logging**
+
 Operations and errors are logged via ILogger.
 In tests, NullLogger ensures safe logging without exceptions.
