@@ -7,7 +7,7 @@ namespace BrightHRCheckoutKata.Concrete
         private readonly Basket _basket = new();
         private readonly List<IPricingRule> _pricingRules;
 
-        public Checkout() : this(GetDefaultPricingRules())
+        public Checkout() : this(DefaultPriceRule.GetDefaultPricingRules())
         {
 
         }
@@ -39,16 +39,6 @@ namespace BrightHRCheckoutKata.Concrete
             {
                 _basket.Add(item);
             }               
-        }
-
-        private static IEnumerable<IPricingRule> GetDefaultPricingRules()
-        {
-            return new List<IPricingRule> {
-            new SpecialPriceRule("A", 50, 3, 130),
-            new SpecialPriceRule("B", 30, 2, 45),
-            new UnitPriceRule("C", 20),
-            new UnitPriceRule("D", 15)
-            };
         }
     }
 }
