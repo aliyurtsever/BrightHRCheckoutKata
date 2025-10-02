@@ -8,5 +8,9 @@ namespace BrightHRCheckoutKata
 {
     public class Checkout : ICheckout
     {
+        public int GetTotalPrice()
+        {
+            return 0;
+        }
     }
 }
