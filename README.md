@@ -1,6 +1,6 @@
-#BrightHR Checkout Kata Application
+# BrightHR Checkout Kata Application
 
-###Description
+### Description
 
 This application developed by.Net 9.
 This project simulates a simple Checkout system.
@@ -10,7 +10,7 @@ Special offers and discounts can be applied.
 The system logs errors and actions using ILogger.
 This kata is designed for practicing TDD and SOLID principles.
 
-###Features / Rules
+### Features / Rules
 
 **Products and Prices**
 Each product has a unit price.
