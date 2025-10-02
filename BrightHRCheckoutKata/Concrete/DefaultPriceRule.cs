@@ -15,7 +15,9 @@ namespace BrightHRCheckoutKata.Concrete
             new SpecialPriceRule("A", 50, 3, 130),
             new SpecialPriceRule("B", 30, 2, 45),
             new UnitPriceRule("C", 20),
-            new UnitPriceRule("D", 15)
+            new UnitPriceRule("D", 15),
+            new UnitPriceRule("E", 30),
+            new UnitPriceRule("F", 45)
             };
         }
     }

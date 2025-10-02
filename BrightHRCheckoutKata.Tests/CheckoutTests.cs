@@ -332,5 +332,18 @@ namespace BrightHRCheckoutKata.Tests
 
             Assert.That(total, Is.EqualTo(225));
         }
+
+        [Test]
+        public void GetTotalPrice_ScannedAEF_Returns()
+        {
+            var checkout = new Checkout();
+
+            checkout.Scan("A");
+            checkout.Scan("E");
+            checkout.Scan("F");
+            var total = checkout.GetTotalPrice();
+
+            Assert.That(total, Is.EqualTo(125));
+        }
     }
 }
