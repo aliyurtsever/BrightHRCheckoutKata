@@ -209,7 +209,7 @@ namespace BrightHRCheckoutKata.Tests
             checkout.Scan("Y");
             var total = checkout.GetTotalPrice();
 
-            Assert.That(total, Is.EqualTo(50));
+            Assert.That(total, Is.EqualTo(0));
         }
     }
 }
