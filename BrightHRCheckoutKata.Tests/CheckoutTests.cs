@@ -1,4 +1,5 @@
-﻿using BrightHRCheckoutKata.Concrete;
+﻿using BrightHRCheckoutKata.Abstract;
+using BrightHRCheckoutKata.Concrete;
 
 namespace BrightHRCheckoutKata.Tests
 {
@@ -18,7 +19,7 @@ namespace BrightHRCheckoutKata.Tests
         {
             var checkout = new Checkout();
 
-            var total =  checkout.GetTotalPrice();
+            var total = checkout.GetTotalPrice();
 
             Assert.That(total, Is.EqualTo(0));
         }
@@ -234,6 +235,102 @@ namespace BrightHRCheckoutKata.Tests
             var total = checkout.GetTotalPrice();
 
             Assert.That(total, Is.EqualTo(80));
+        }
+
+        [Test]
+        public void GetTotalPrice_PreparedCustomRule_Returns80()
+        {
+            var customPricingRule = new List<IPricingRule>{
+                                    new UnitPriceRule("A", 50),
+                                    new UnitPriceRule("B", 30),
+                                    new SpecialPriceRule("C",20,4,60),
+                                    new SpecialPriceRule("D",15,3,35)
+                            };
+
+            var checkout = new Checkout(customPricingRule);
+
+            checkout.Scan("A");
+            checkout.Scan("B");
+            var total = checkout.GetTotalPrice();
+
+            Assert.That(total, Is.EqualTo(80));
+        }
+
+        [Test]
+        public void GetTotalPrice_PreparedCustomRule_Returns140()
+        {
+            var customPricingRule = new List<IPricingRule>{
+                                    new UnitPriceRule("A", 50),
+                                    new UnitPriceRule("B", 30),
+                                    new SpecialPriceRule("C",20,4,60),
+                                    new SpecialPriceRule("D",15,3,35)
+                            };
+
+            var checkout = new Checkout(customPricingRule);
+
+            checkout.Scan("A");
+            checkout.Scan("B");
+            checkout.Scan("C");
+            checkout.Scan("C");
+            checkout.Scan("C");
+            checkout.Scan("C");
+            var total = checkout.GetTotalPrice();
+
+            Assert.That(total, Is.EqualTo(140));
+        }
+
+        [Test]
+        public void GetTotalPrice_PreparedCustomRule_Returns175()
+        {
+            var customPricingRule = new List<IPricingRule>{
+                                    new UnitPriceRule("A", 50),
+                                    new UnitPriceRule("B", 30),
+                                    new SpecialPriceRule("C",20,4,60),
+                                    new SpecialPriceRule("D",15,3,35)
+                            };
+
+            var checkout = new Checkout(customPricingRule);
+
+            checkout.Scan("A");
+            checkout.Scan("B");
+            checkout.Scan("C");
+            checkout.Scan("C");
+            checkout.Scan("C");
+            checkout.Scan("C");
+            checkout.Scan("D");
+            checkout.Scan("D");
+            checkout.Scan("D");
+            var total = checkout.GetTotalPrice();
+
+            Assert.That(total, Is.EqualTo(175));
+        }
+
+        [Test]
+        public void GetTotalPrice_PreparedCustomRule_Returns225()
+        {
+            var customPricingRule = new List<IPricingRule>{
+                                    new UnitPriceRule("A", 50),
+                                    new UnitPriceRule("B", 30),
+                                    new SpecialPriceRule("C",20,4,60),
+                                    new SpecialPriceRule("D",15,3,35),
+                                    new UnitPriceRule("E",50)
+                            };
+
+            var checkout = new Checkout(customPricingRule);
+
+            checkout.Scan("A");
+            checkout.Scan("B");
+            checkout.Scan("C");
+            checkout.Scan("C");
+            checkout.Scan("C");
+            checkout.Scan("C");
+            checkout.Scan("D");
+            checkout.Scan("D");
+            checkout.Scan("D");
+            checkout.Scan("E");
+            var total = checkout.GetTotalPrice();
+
+            Assert.That(total, Is.EqualTo(225));
         }
     }
 }
