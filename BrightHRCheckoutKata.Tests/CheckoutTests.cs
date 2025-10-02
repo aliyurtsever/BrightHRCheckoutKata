@@ -65,5 +65,36 @@ namespace BrightHRCheckoutKata.Tests
 
             Assert.That(total, Is.EqualTo(15));
         }
+
+        [Test]
+        public void GetTotalPrice_ScannedAllItems_Returns115()
+        {
+            var checkout = new Checkout();
+
+            checkout.Scan("A");
+            checkout.Scan("B");
+            checkout.Scan("C");
+            checkout.Scan("D");
+            var total = checkout.GetTotalPrice();
+
+            Assert.That(total, Is.EqualTo(115));
+        }
+
+        [Test]
+        public void GetTotalPrice_ScannedWithoutSpecialPriceItems_Returns200()
+        {
+            var checkout = new Checkout();
+
+            checkout.Scan("A");
+            checkout.Scan("A");
+            checkout.Scan("B");
+            checkout.Scan("C");
+            checkout.Scan("C");
+            checkout.Scan("D");
+            checkout.Scan("D");
+            var total = checkout.GetTotalPrice();
+
+            Assert.That(total, Is.EqualTo(200));
+        }
     }
 }
