@@ -9,8 +9,13 @@ namespace BrightHRCheckoutKata
     public class Checkout : ICheckout
     {
         private int _totalPrice = 0;
+        private int _countA = 0;
         public int GetTotalPrice()
         {
+            int trippleScanned = _countA / 3;
+            int remainingScanned = _countA % 3;
+            _totalPrice += trippleScanned * 130 + remainingScanned * 50;
+
             return _totalPrice;
         }
 
@@ -18,7 +23,7 @@ namespace BrightHRCheckoutKata
         {
             if (item == "A")
             {
-                _totalPrice += 50;
+                _countA++;
             }
 
             if (item == "B")
