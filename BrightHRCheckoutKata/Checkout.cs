@@ -12,5 +12,10 @@ namespace BrightHRCheckoutKata
         {
             return 0;
         }
+
+        public void Scan(string item)
+        {
+            
+        }
     }
 }
