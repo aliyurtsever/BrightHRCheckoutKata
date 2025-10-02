@@ -11,5 +11,15 @@ namespace BrightHRCheckoutKata.Tests
 
             Assert.That(checkout, Does.Not.Null);
         }
+
+        [Test]
+        public void GetTotalPrice_NoItemsScanned_ReturnsZero()
+        {
+            var checkout = new Checkout();
+
+            var total =  checkout.GetTotalPrice();
+
+            Assert.That(checkout, Is.EqualTo(0));
+        }
     }
 }
