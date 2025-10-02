@@ -136,5 +136,67 @@ namespace BrightHRCheckoutKata.Tests
 
             Assert.That(total, Is.EqualTo(45));
         }
+
+        [Test]
+        public void GetTotalPrice_Scanned3BItems_Returns75()
+        {
+            var checkout = new Checkout();
+
+            checkout.Scan("B");
+            checkout.Scan("B");
+            checkout.Scan("B");
+            var total = checkout.GetTotalPrice();
+
+            Assert.That(total, Is.EqualTo(75));
+        }
+
+        [Test]
+        public void GetTotalPrice_Scanned4A4BItems_Returns270()
+        {
+            var checkout = new Checkout();
+
+            checkout.Scan("A");
+            checkout.Scan("A");
+            checkout.Scan("A");
+            checkout.Scan("A");
+            checkout.Scan("B");
+            checkout.Scan("B");
+            checkout.Scan("B");
+            checkout.Scan("B");
+            var total = checkout.GetTotalPrice();
+
+            Assert.That(total, Is.EqualTo(270));
+        }
+
+        [Test]
+        public void GetTotalPrice_Scanned3A2B1C2DItems_Returns270()
+        {
+            var checkout = new Checkout();
+
+            checkout.Scan("A");
+            checkout.Scan("A");
+            checkout.Scan("A");
+            checkout.Scan("B");
+            checkout.Scan("B");
+            checkout.Scan("C");
+            checkout.Scan("D");
+            checkout.Scan("D");
+            var total = checkout.GetTotalPrice();
+
+            Assert.That(total, Is.EqualTo(225));
+        }
+
+        [Test]
+        public void GetTotalPrice_Scanned1C2DItems_Returns270()
+        {
+            var checkout = new Checkout();
+
+            checkout.Scan("C");
+            checkout.Scan("D");
+            checkout.Scan("D");
+            var total = checkout.GetTotalPrice();
+
+            Assert.That(total, Is.EqualTo(50));
+        }
     }
 }
