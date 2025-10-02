@@ -1,4 +1,5 @@
-﻿
+﻿using BrightHRCheckoutKata.Concrete;
+
 namespace BrightHRCheckoutKata.Tests
 {
     [TestFixture]
