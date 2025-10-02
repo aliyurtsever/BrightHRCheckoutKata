@@ -25,6 +25,16 @@ namespace BrightHRCheckoutKata
             {
                 _totalPrice += 30;
             }
+
+            if (item == "C")
+            {
+                _totalPrice += 20;
+            }
+
+            if (item == "D")
+            {
+                _totalPrice += 15;
+            }
         }
     }
 }
