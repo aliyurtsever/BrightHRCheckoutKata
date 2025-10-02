@@ -8,14 +8,18 @@ namespace BrightHRCheckoutKata
 {
     public class Checkout : ICheckout
     {
+        private int _totalPrice = 0;
         public int GetTotalPrice()
         {
-            return 0;
+            return _totalPrice;
         }
 
         public void Scan(string item)
         {
-            
+            if (item == "A")
+            {
+                _totalPrice += 50;
+            }
         }
     }
 }
