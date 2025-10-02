@@ -3,7 +3,7 @@ namespace BrightHRCheckoutKata.Abstract
 {
     public interface IPricingRule
     {
-        string Sku { get; }
+        bool AppliesTo(string sku);
         int CalculatePrice(int quantity);
     }
 }

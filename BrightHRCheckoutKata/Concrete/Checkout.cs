@@ -22,7 +22,7 @@ namespace BrightHRCheckoutKata.Concrete
             int total = 0;
             foreach (var item in _basket.Items)
             {
-                var rule = _pricingRules.FirstOrDefault(r => r.Sku == item.Key);
+                var rule = _pricingRules.FirstOrDefault(r => r.AppliesTo(item.Key));
 
                 if (rule != null)
                 {
@@ -35,8 +35,10 @@ namespace BrightHRCheckoutKata.Concrete
 
         public void Scan(string item)
         {
-            if (_pricingRules.Any(r => r.Sku == item))
+            if (_pricingRules.Any(r => r.AppliesTo(item)))
+            {
                 _basket.Add(item);
+            }               
         }
 
         private static IEnumerable<IPricingRule> GetDefaultPricingRules()

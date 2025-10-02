@@ -5,14 +5,14 @@ namespace BrightHRCheckoutKata.Concrete
 {
     public class SpecialPriceRule : IPricingRule
     {
-        public string Sku { get; }
+        private readonly string _sku;
         private readonly int _unitPrice;
         private readonly int _offerQuantity;
         private readonly int _offerPrice;
 
         public SpecialPriceRule(string sku, int unitPrice, int offerQuantity, int offerPrice)
         {
-            Sku = sku;
+            _sku = sku;
             _unitPrice = unitPrice;
             _offerQuantity = offerQuantity;
             _offerPrice = offerPrice;
@@ -24,5 +24,7 @@ namespace BrightHRCheckoutKata.Concrete
             int remainder = quantity % _offerQuantity;
             return offerCount * _offerPrice + remainder * _unitPrice;
         }
+
+        public bool AppliesTo(string sku) => sku == _sku;
     }
 }
