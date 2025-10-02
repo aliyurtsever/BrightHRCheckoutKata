@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BrightHRCheckoutKata
 {
-    public class Checkout : ICheckout
+    public interface ICheckout
     {
     }
 }
